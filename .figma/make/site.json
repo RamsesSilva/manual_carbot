@@ -1,0 +1,10 @@
+{
+  "description": "This web app serves as a comprehensive manual for assembling a modular cart, featuring step-by-step tutorials, progress tracking, and FAQs to enhance user experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

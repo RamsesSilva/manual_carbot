@@ -1,0 +1,21 @@
+import type React from "react";
+import { workshopImage, toolsImage, moduleImages, modules, taskNames, allTasks, partGroups, parts, faqs, robotchat, carritoycelular, inicio, ninacarrito } from "../data/siteData";
+import type { Page } from "../data/siteData";
+import { Icon, CartArt, HeroTitle } from "../components/UI";
+
+export function Progress({ checkedParts, checkedTasks, setCheckedParts, setCheckedTasks, progress, go }: { checkedParts:string[];checkedTasks:string[];setCheckedParts:(v:string[])=>void;setCheckedTasks:(v:string[])=>void;progress:number;go:(p:Page)=>void }) {
+  const remaining=Math.max(0,391-Math.round(391*(checkedTasks.length/allTasks.length)));
+  return <main><HeroTitle eyebrow="Calculadora de progreso" title={<>Tu avance de armado, al<br/>detalle</>} description="Aquí se combina el inventario de piezas y los pasos completados para calcular tu progreso real y el tiempo que te queda." action={<button className="secondary" onClick={()=>{setCheckedParts([]);setCheckedTasks([])}}><Icon name="reset" className="size-4"/> Reiniciar avance</button>} />
+    <section className="mx-auto max-w-[1080px] px-5 py-16"><div className="grid gap-4 md:grid-cols-[260px_1fr_1fr]"><div className="row-span-2 grid place-items-center rounded-lg border p-7 text-center"><div className="grid size-44 place-items-center rounded-full border-[14px] border-[#EAE3D7]"><div><b className="font-display text-4xl">{progress}%</b><p className="text-[10px] uppercase tracking-wider text-black/45">Avance general</p></div></div><p className="mt-5 text-sm leading-6 text-black/55">El cálculo pondera el inventario de piezas y los pasos del tutorial completados.</p></div>{[
+      ["Piezas reunidas",`${checkedParts.length} / ${parts.length}`,"grid","#DDF2DF"],
+      ["Pasos completados",`${checkedTasks.length} / ${allTasks.length}`,"tool","#FFE9C9"],
+      ["Tiempo restante",`${Math.floor(remaining/60)} h ${remaining%60} min`,"clock","#FCE6DE"],
+      ["Módulos terminados",`${modules.filter(m=>allTasks.filter(t=>t.moduleId===m.id).every(t=>checkedTasks.includes(t.id))).length} / 6`,"check","#DDF2DF"],
+    ].map(([label,value,icon,color])=><div key={label} className="rounded-lg border p-6"><span className="grid size-9 place-items-center rounded-md" style={{backgroundColor:color}}><Icon name={icon} className="size-4"/></span><p className="mt-4 text-xs uppercase tracking-wider text-black/45">{label}</p><b className="mt-2 block font-display text-3xl">{value}</b></div>)}</div>
+      <div className="mt-10 rounded-lg border p-7"><div className="flex justify-between"><h2 className="font-display text-xl font-bold">Desglose por módulo</h2><button onClick={()=>go("manual")} className="text-sm font-bold text-[#B86000]">Continuar el tutorial →</button></div><div className="mt-6 space-y-4">{modules.map((module)=>{const tasks=allTasks.filter(t=>t.moduleId===module.id);const amount=tasks.filter(t=>checkedTasks.includes(t.id)).length;const pct=Math.round(amount/tasks.length*100);return <div key={module.id} className="grid grid-cols-[42px_1fr_48px] items-center gap-4 rounded-lg border p-3"><span className={`grid size-10 place-items-center rounded-md ${pct===100?"bg-[#2F8F55] text-white":"bg-[#FFE9C9] text-[#B86000]"}`}><Icon name={pct===100?"check":module.icon} className="size-4"/></span><div><div className="flex justify-between gap-3"><b className="text-sm">{module.id}. {module.title}</b><small className="text-black/45">{amount}/{tasks.length} pasos · ~{module.time} min</small></div><div className="mt-3 h-1.5 rounded-full bg-[#EAE3D7]"><div className="h-full rounded-full bg-[#2F8F55]" style={{width:`${pct}%`}}/></div></div><b>{pct}%</b></div>})}</div></div>
+    </section></main>;
+}
+
+// ==========================================---------------------------------------------------------------------------------------------------------------------------------------------------------
+//  PÁGINA MANUAL -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ==========================================---------------------------------------------------------------------------------------------------------------------------------------------

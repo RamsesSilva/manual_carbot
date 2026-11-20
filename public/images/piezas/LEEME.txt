@@ -1,0 +1,14 @@
+IMÁGENES DE LA LISTA DE PIEZAS
+
+La aplicación usa rutas públicas relativas a la base de Vite. Para las piezas, el código contiene rutas como /images/piezas/E-01.jpg y las convierte automáticamente usando import.meta.env.BASE_URL.
+
+Coloca aquí las imágenes individuales, conservando exactamente los nombres y extensiones configurados en src/App.tsx.
+
+Incluidas en este paquete:
+- E-01.jpg
+- E-02.png
+- E-03.png
+- E-04.png
+- E-05.png
+
+Las demás piezas todavía necesitan sus archivos de imagen correspondientes (por ejemplo, E-05.jpg, R-01.jpg, S-01.jpg, etc.). Si el archivo no existe en esta carpeta, la tarjeta mostrará “Imagen no disponible”.

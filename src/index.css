@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background: #fcf9f2;
+}
+
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgb(35 24 15 / 0.1);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+button:hover {
+  box-shadow: 0 5px 14px rgb(35 24 15 / 0.16);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgb(35 24 15 / 0.12);
+}
+
+main [class*="rounded-"][class*="border"],
+footer [class*="rounded-"][class*="border"] {
+  box-shadow:
+    0 1px 2px rgb(35 24 15 / 0.05),
+    0 7px 20px rgb(35 24 15 / 0.06);
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.eyebrow {
+  margin-bottom: 0.75rem;
+  margin-top: -1rem;
+  color: #b86000;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.display-title {
+  max-width: 80rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.display-subtitle {
+  max-width: 80rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.copy {
+  margin-top: 1.25rem;
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  line-height: 1,8;
+}
+.copysub {
+  margin-top: 1rem;
+  color: rgb(0 0 0 / 0.85);
+  font-size: 0.9rem;
+  line-height: 1,2;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.primary {
+  background: #ec7a00;
+  color: white;
+}
+
+.secondary {
+  border: 1px solid rgb(0 0 0 / 0.14);
+  background: transparent;
+}
+
+.footer-title {
+  margin-bottom: 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.footer-link {
+  display: block;
+  margin-top: 0.65rem;
+  color: rgb(0 0 0 / 0.58);
+  font-size: 0.8rem;
+}
+
+::selection {
+  color: white;
+  background: #ef7d00;
+}
+
+
+
+/* ================================
+   SECCIÓN: RUTA DE ARMADO
+================================ */
+
+.ruta-armado {
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 96px 20px;
+  box-sizing: border-box;
+}
+
+/* Encabezado: título y botón */
+
+.ruta-armado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Texto superior */
+
+.ruta-armado .eyebrow {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Título principal */
+
+.ruta-armado .display-title {
+  max-width: 700px;
+  margin: 0;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+/* Botón */
+
+.ruta-armado .primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 12px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Cuadrícula de módulos */
+
+.ruta-armado-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+}
+
+/* Tarjetas */
+
+.ruta-armado-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ruta-armado-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
+}
+
+/* Parte superior de cada tarjeta */
+
+.ruta-armado-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Número del módulo */
+
+.ruta-armado-card-number {
+  font-size: 30px;
+  line-height: 1;
+  color: rgb(0 0 0 / 40%);
+}
+
+/* Título de cada módulo */
+
+.ruta-armado-card h3 {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+/* Información de pasos y tiempo */
+
+.ruta-armado-card p {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+
+/* ================================
+   TABLETS: hasta 900px
+================================ */
+
+@media (max-width: 900px) {
+  .ruta-armado {
+    padding: 72px 24px;
+  }
+
+   .display-title {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+
+  .ruta-armado-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .ruta-armado-card {
+    padding: 20px;
+  }
+}
+
+
+/* ================================
+   CELULARES: hasta 600px
+================================ */
+
+@media (max-width: 600px) {
+  .ruta-armado {
+    padding: 48px 18px;
+  }
+
+  /* Encabezado vertical */
+
+  .ruta-armado-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  /* Título adaptable */
+
+   .display-title {
+    max-width: 100%;
+    font-size: clamp(26px, 7vw, 57px);
+    line-height: 1.2;
+  }
+
+  .ruta-armado .eyebrow {
+    font-size: 13px;
+  }
+
+  /* Botón de ancho completo */
+
+  .ruta-armado .primary {
+    width: 78%;
+    min-height: auto;
+    box-sizing: border-box;
+    white-space: normal;
+  }
+
+  /* Una tarjeta por fila */
+
+  .ruta-armado-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .ruta-armado-card {
+    padding: 20px;
+  }
+
+  .ruta-armado-card h3 {
+    margin-top: 20px;
+    font-size: 17px;
+  }
+}
+
+
+/* ================================
+   CELULARES PEQUEÑOS: hasta 360px
+================================ */
+
+@media (max-width: 360px) {
+  .ruta-armado {
+    padding: auto;
+  }
+
+   .display-title {
+    font-size: 25px;
+  }
+
+  .ruta-armado-card {
+    padding: 16px;
+  }
+
+  .ruta-armado-card-number {
+    font-size: 25px;
+  }
+}
+
+
+/* ================================
+   ACCESIBILIDAD
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ruta-armado-card {
+    transition: none;
+  }
+
+  .ruta-armado-card:hover {
+    transform: none;
+  }
+}
+```
+
